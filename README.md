@@ -4,5 +4,3 @@ at Birkbeck in 2017/18.
 
 Please enter your name here: James Seal
 
-Changed
-
