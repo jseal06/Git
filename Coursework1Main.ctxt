@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=description\ expected\ actual
+comment0.target=void\ testIntEqual(java.lang.String,\ int,\ int)
+comment0.text=\n\ Tests\ two\ int\ values\ for\ equality.\n\n\ Side\ effects\:\ screen\ output\ of\ test\ result\ and\ increment\ of\ static\n\ counter\ variables\ according\ to\ result.\n\n\ @param\ description\ \ to\ be\ used\ as\ part\ of\ the\ screen\ output\n\ @param\ expected\ \ the\ expected\ value\n\ @param\ actual\ \ the\ actual\ value\n
+comment1.params=description\ expected\ actual
+comment1.target=void\ testDoubleEqual(java.lang.String,\ double,\ double)
+comment1.text=\n\ Tests\ two\ double\ values\ for\ equality\ (up\ to\ a\ small\ "delta").\n\n\ Side\ effects\:\ screen\ output\ of\ test\ result\ and\ increment\ of\ static\n\ counter\ variables\ according\ to\ result.\n\n\ @param\ description\ \ to\ be\ used\ as\ part\ of\ the\ screen\ output\n\ @param\ expected\ \ the\ expected\ value\n\ @param\ actual\ \ the\ actual\ value\n
+comment2.params=description\ expected\ actual
+comment2.target=void\ testStringEqual(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.text=\n\ Tests\ two\ String\ values\ for\ equality.\n\n\ Side\ effects\:\ screen\ output\ of\ test\ result\ and\ increment\ of\ static\n\ counter\ variables\ according\ to\ result.\n\n\ @param\ description\ \ to\ be\ used\ as\ part\ of\ the\ screen\ output\n\ @param\ expected\ \ the\ expected\ value\n\ @param\ actual\ \ the\ actual\ value\n
+comment3.params=description\ expected\ actual\ result
+comment3.target=void\ sideEffectsForTest(java.lang.String,\ java.lang.String,\ java.lang.String,\ boolean)
+comment3.text=\n\ Helper\ method\ for\ the\ side\ effects\ of\ the\ tests\ for\ different\ data\ types\n\ (here\ already\ converted\ to\ Strings)\:\ screen\ output\ and\ increment\ of\n\ static\ counter\ variables.\n\n\ @param\ description\ \ description\ of\ the\ test\ to\ be\ printed\n\ @param\ expected\ \ String\ representation\ of\ the\ expected\ value\n\ @param\ actual\ \ String\ representation\ of\ the\ actual\ value\n\ @param\ result\ \ true\:\ test\ has\ passed;\ false\:\ test\ has\ failed\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5
