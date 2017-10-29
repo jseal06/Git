@@ -1,4 +1,4 @@
-//2nd_A
+//2nd_B
 import java.util.*;
 
 /**
