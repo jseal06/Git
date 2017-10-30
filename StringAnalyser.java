@@ -1,4 +1,4 @@
-//2nd_B
+//2nd_C
 import java.util.*;
 
 /**
@@ -11,13 +11,14 @@ import java.util.*;
  * method (if any). Added null elements are ignored by the analyses.
  * Repeated occurrences of the same/equal Strings are allowed.
  *
- * @author TO DO: please enter your name here
+ * @author TO DO: please enter your name here : James Seal
  */
 public class StringAnalyser {
 
     // TO DO: add and document instance variable(s)
     private ArrayList<String> analyser = new ArrayList<>();
     public ArrayList<String> group = new ArrayList<>();
+    public ArrayList<String> list = new ArrayList<>();
 
     /**
      * Constructs a new StringAnalyser without any Strings.
@@ -37,7 +38,7 @@ public class StringAnalyser {
      *  constructed StringAnalyser
      */
     public StringAnalyser(String[] strings) {
-        // TO DO: write constructor
+        // 
         //!= null
         strings = strings;
         for(int i = 0; i < strings.length ; i++){
@@ -100,7 +101,7 @@ public class StringAnalyser {
      * Resets this StringAnalyser to a StringAnalyser that contains 0 Strings.
      */
     public void reset() {
-        // TO DO: write proper method body
+        // clears all for anaylser
         analyser.clear();
     }
 
@@ -130,7 +131,35 @@ public class StringAnalyser {
     public int numberOfUniqueStrings() {
         // TO DO: write proper method body
         //boolean flag = false;
-       
+        
+        int distinct = 0;
+        
+        if(analyser.size()>0){
+            for(int i = 0 ; i < analyser.size(); i++){
+                String mm = analyser.get(i);
+                if((analyser.get(i) != null) && (analyser.get(i) != "")){
+                    for(int k = 0 ; k < analyser.size(); k++){
+                        String kk = analyser.get(k);
+                        if((analyser.get(k) != null) && (analyser.get(k) != "")){
+                            
+                          
+                            if (analyser.get(i).equals(analyser.get(k))){
+                                // contains method not working on list must change
+                                if(list.contains(analyser.get(i))){
+                                    list.add(analyser.get(i));
+                                    
+                                    distinct++;
+                                }
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+        }
         /*
         int count = 0;
          for (int i = 0 ; i < analyser.size(); i++){
@@ -171,7 +200,7 @@ public class StringAnalyser {
         }
         */
         //return count;
-        return 0;
+        return distinct;
     }
 
     /**
@@ -366,7 +395,7 @@ public class StringAnalyser {
         if(analyser.size()>0){
             for(int i = 0 ; i < analyser.size(); i++){
                 if((analyser.get(i) != null) && (analyser.get(i) != "")){
-                    String mm = analyser.get(i);
+                    //String mm = analyser.get(i);
                     if (count == 0){
                         c += analyser.get(i);
                         count++;
