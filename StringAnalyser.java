@@ -1,3 +1,4 @@
+//2nd_C
 import java.util.*;
 
 /**
@@ -10,17 +11,22 @@ import java.util.*;
  * method (if any). Added null elements are ignored by the analyses.
  * Repeated occurrences of the same/equal Strings are allowed.
  *
- * @author TO DO: please enter your name here
+ * @author TO DO: please enter your name here : James Seal
  */
 public class StringAnalyser {
 
     // TO DO: add and document instance variable(s)
+    private ArrayList<String> analyser = new ArrayList<>();
+    public ArrayList<String> group = new ArrayList<>();
+    public ArrayList<String> list = new ArrayList<>();
 
     /**
      * Constructs a new StringAnalyser without any Strings.
      */
     public StringAnalyser() {
         // TO DO: write constructor
+        //create an empty array list
+        ArrayList<String> analyser = new ArrayList<>();
     }
 
     /**
@@ -33,7 +39,18 @@ public class StringAnalyser {
      *  constructed StringAnalyser
      */
     public StringAnalyser(String[] strings) {
-        // TO DO: write constructor
+        // TO DO: write constructor adding non null strings
+        //this method for the constructor
+        this();
+        strings = strings;
+        for(int i = 0; i < strings.length ; i++){
+            //non null to be added to constuctor
+            String word = strings[i];
+            if (word != null){
+                //add word
+                analyser.add(word);
+            }
+        }
     }
 
     /**
@@ -45,7 +62,14 @@ public class StringAnalyser {
      */
     public boolean add(String s) {
         // TO DO: write proper method body
-        return false;
+        s = s;
+        //adds non null string to analyser and return true;
+        if(s != null){
+            analyser.add(s);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -58,14 +82,29 @@ public class StringAnalyser {
      */
     public boolean addAll(String[] strings) {
         // TO DO: write proper method body
-        return false;
+        //return flag true if one element is not-null.
+        strings = strings;
+        boolean flag = false;
+        for(int i = 0 ; i < strings.length ; i++){
+            String word = strings[i];
+            if (word != null){
+                analyser.add(word);
+                flag = true;
+            }
+        }
+        if (flag == true){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
      * Resets this StringAnalyser to a StringAnalyser that contains 0 Strings.
      */
     public void reset() {
-        // TO DO: write proper method body
+        // clears all for anaylser
+        analyser.clear();
     }
 
     /**
@@ -75,7 +114,14 @@ public class StringAnalyser {
      */
     public int numberOfStrings() {
         // TO DO: write proper method body
-        return 0;
+        //an enhanceed for loop for speed
+        int count = 0;
+        for(String word : analyser){
+            if(word != null){
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -87,6 +133,32 @@ public class StringAnalyser {
      */
     public int numberOfUniqueStrings() {
         // TO DO: write proper method body
+        // compare the first item to the others in the array
+        int distinct = 0;
+      
+        boolean flag = false;
+        if(analyser.size() > 0){
+             
+             String str1 = analyser.get(0);
+             if(analyser.size() > 0){
+                //  String str1 = analyser.get(0);
+                 if(str1 != null){
+                     distinct++;
+                }
+             }
+         
+             for(int i = 1; i < analyser.size() ; i++){
+                 String str2 = analyser.get(i);
+                 boolean result = str1.equals( str2 );
+                 if(str1 != null && result != true && flag == false){
+                     distinct++;
+                     flag = true;
+                 }else if (distinct >= 1 & flag == true){
+                     distinct++;
+                 }
+             }
+             return distinct;
+            }
         return 0;
     }
 
@@ -97,7 +169,15 @@ public class StringAnalyser {
      */
     public int totalLength() {
         // TO DO: write proper method body
-        return 0;
+        int totalLength = 0;
+        //loop through list and add length of each string
+        for (int i = 0 ; i < analyser.size(); i++){
+            String n = analyser.get(i);
+            if (n != null){
+                totalLength = totalLength + n.length();
+            }
+        }
+        return totalLength;
     }
 
 
@@ -117,7 +197,17 @@ public class StringAnalyser {
      */
     public static int totalLength(StringAnalyser[] analysers) {
         // TO DO: write proper method body
-        return 0;
+        //loop througth the array of strings from 'analysers' and sdd the total length.
+        analysers = analysers;
+        String names = "";
+        int total = 0;
+        for (int i = 0; i < analysers.length; i++){
+            if (analysers[i] != null){
+                names += analysers[i];
+                total += names.length();               
+                }
+            }
+        return total;
     }
 
     /**
@@ -132,7 +222,27 @@ public class StringAnalyser {
      */
     public double averageLength() {
         // TO DO: write proper method body
-        return 0.0;
+        //add all and then find the average, amek sure to use doubles
+        double totalLength = 0.0;
+        int count = 0;
+        double t = 0.0;
+        if(analyser.size() == 0){
+            return -1.0;
+        }else{
+            for(int i = 0 ; i < analyser.size() ; i++ ){
+                if (analyser.get(i) != null){
+                    String n = analyser.get(i);
+                    totalLength += n.length();
+                    count++;
+                }
+            }
+            t = totalLength/count;
+        }
+        if (t > 0.0){
+            return t;
+        }else{
+            return - 1.0;
+        }
     }
 
     /**
@@ -151,7 +261,25 @@ public class StringAnalyser {
      */
     public int numberOfStringsWithUpperCaseChars() {
         // TO DO: write proper method body
-        return 0;
+        boolean flag = false;
+        int count = 0;
+        for(int i = 0; i < analyser.size(); i++){
+            String word = analyser.get(i);
+            if(word != null){
+                for (int k = 0; k < word.length(); k++){
+                    
+                        char ch = word.charAt(k);
+                        if (Character.isUpperCase(ch)){
+                            flag = true;
+                        }
+                    }
+            }
+            if (flag == true){
+                count++;
+                flag = false;
+            }
+        }
+        return count;
     }
 
     /**
@@ -165,8 +293,25 @@ public class StringAnalyser {
      */
     public String getGreatest() {
         // TO DO: write proper method body
+        //set the greatest as the first and then loop through to compare the strings in analyser
+        if(analyser.size() > 0){
+            int k = 0;
+            String greatest = null;           
+            for(k = 0; k < analyser.size(); k++){              
+                String word = analyser.get(k);
+                if (greatest == null || greatest.compareTo(word)<0){
+                    greatest = word;
+                }else{
+                    continue;
+                }
+            }
+            return greatest;
+           } 
         return null;
-    }
+        }
+        
+        
+    
 
     /**
      * Returns a String representation for the contents of this
@@ -189,6 +334,43 @@ public class StringAnalyser {
      */
     public String toString() {
         // TO DO: write proper method body
-        return null;
+        String c = "[";
+        int count = 0;
+        // int i = 0;
+        if(analyser.size()>0){
+            for(int i = 0 ; i < analyser.size(); i++){
+                if((analyser.get(i) != null) && (analyser.get(i) != "")){
+                    //String mm = analyser.get(i);
+                    if (count == 0){
+                        c += analyser.get(i);
+                        count++;
+                    }else{
+                        c += ", "+analyser.get(i);
+                    }
+                }
+            }
+        }
+        c += "]";
+        return c;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
