@@ -132,32 +132,36 @@ public class StringAnalyser {
      */
     public int numberOfUniqueStrings() {
         // TO DO: write proper method body
-        // compare the first item to the others in the array
+        // compare the first item to the others in the array then increatent
         int distinct = 0;
+        int count = 0;
       
         boolean flag = false;
         if(analyser.size() > 0){
-             
-             String str1 = analyser.get(0);
-             if(analyser.size() > 0){
-                //  String str1 = analyser.get(0);
-                 if(str1 != null){
-                     distinct++;
-                }
-             }
-         
-             for(int i = 1; i < analyser.size() ; i++){
-                 String str2 = analyser.get(i);
-                 boolean result = str1.equals( str2 );
-                 if(str1 != null && result != true && flag == false){
-                     distinct++;
-                     flag = true;
-                 }else if (distinct >= 1 & flag == true){
-                     distinct++;
+             for(int k = 0 ; k < analyser.size(); k++){
+                 String str1 = analyser.get(k);
+                 //String str1 = analyser.get(0);
+                 if(analyser.size() > 0){
+                    //  String str1 = analyser.get(0);
+                     if(str1 != null){
+                         distinct++;
+                    }
                  }
-             }
-             return distinct;
-            }
+             
+                 for(int i = 1; i < analyser.size() ; i++){
+                     String str2 = analyser.get(i);
+                     boolean result = str1.equals( str2 );
+                     if(str1 != null && result != true && flag == false){
+                         distinct++;
+                         flag = true;
+                     }else if (distinct >= 1 & flag == true){
+                         distinct++;
+                     }
+                 }
+                }
+             //count ++
+             return distinct/analyser.size();
+        }
         return 0;
     }
 
