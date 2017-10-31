@@ -25,7 +25,8 @@ public class StringAnalyser {
      */
     public StringAnalyser() {
         // TO DO: write constructor
-        analyser.add(null);       
+        //create an empty array list
+        ArrayList<String> analyser = new ArrayList<>();
     }
 
     /**
@@ -38,8 +39,9 @@ public class StringAnalyser {
      *  constructed StringAnalyser
      */
     public StringAnalyser(String[] strings) {
-        // 
-        //!= null
+        // TO DO: write constructor adding non null strings
+        //this method for the constructor
+        this();
         strings = strings;
         for(int i = 0; i < strings.length ; i++){
             //non null to be added to constuctor
@@ -61,7 +63,7 @@ public class StringAnalyser {
     public boolean add(String s) {
         // TO DO: write proper method body
         s = s;
-        //add non null string to analyser and return true;
+        //adds non null string to analyser and return true;
         if(s != null){
             analyser.add(s);
             return true;
@@ -80,7 +82,7 @@ public class StringAnalyser {
      */
     public boolean addAll(String[] strings) {
         // TO DO: write proper method body
-        //return flag true if one element is not null.
+        //return flag true if one element is not-null.
         strings = strings;
         boolean flag = false;
         for(int i = 0 ; i < strings.length ; i++){
@@ -112,6 +114,7 @@ public class StringAnalyser {
      */
     public int numberOfStrings() {
         // TO DO: write proper method body
+        //an enhanceed for loop for speed
         int count = 0;
         for(String word : analyser){
             if(word != null){
@@ -130,77 +133,33 @@ public class StringAnalyser {
      */
     public int numberOfUniqueStrings() {
         // TO DO: write proper method body
-        //boolean flag = false;
-        
+        // compare the first item to the others in the array
         int distinct = 0;
-        
-        if(analyser.size()>0){
-            for(int i = 0 ; i < analyser.size(); i++){
-                String mm = analyser.get(i);
-                if((analyser.get(i) != null) && (analyser.get(i) != "")){
-                    for(int k = 0 ; k < analyser.size(); k++){
-                        String kk = analyser.get(k);
-                        if((analyser.get(k) != null) && (analyser.get(k) != "")){
-                            
-                          
-                            if (analyser.get(i).equals(analyser.get(k))){
-                                // contains method not working on list must change
-                                if(list.contains(analyser.get(i))){
-                                    list.add(analyser.get(i));
-                                    
-                                    distinct++;
-                                }
-                            }
-                            
-                        }
-                        
-                    }
-                    
+      
+        boolean flag = false;
+        if(analyser.size() > 0){
+             
+             String str1 = analyser.get(0);
+             if(analyser.size() > 0){
+                //  String str1 = analyser.get(0);
+                 if(str1 != null){
+                     distinct++;
                 }
-                
+             }
+         
+             for(int i = 1; i < analyser.size() ; i++){
+                 String str2 = analyser.get(i);
+                 boolean result = str1.equals( str2 );
+                 if(str1 != null && result != true && flag == false){
+                     distinct++;
+                     flag = true;
+                 }else if (distinct >= 1 & flag == true){
+                     distinct++;
+                 }
+             }
+             return distinct;
             }
-        }
-        /*
-        int count = 0;
-         for (int i = 0 ; i < analyser.size(); i++){
-            String word1 = analyser.get(i);
-            for (int j = 1; j < analyser.size(); j++){
-                String word2 = analyser.get(j);
-                if((word1 != null)&&(word1.equals(word2))){
-                    group.add(word1);
-                    //flag = true;
-                }else{
-                    group.add(word1);
-                }
-            }
-            if(group.size()>0){
-                count++;
-                //if (i == analyser.size()){
-                //    break;
-                //}
-            }
-        }
-        */
-        
-        /*
-        for (int i = 0 ; i < analyser.size(); i++){
-            String word1 = analyser.get(i);
-            for (int j = 1; j < analyser.size(); j++){
-                String word2 = analyser.get(j);
-                if((word1 != null)&&(word1.equals(word2))){
-                    flag = true;
-                }
-            }
-            if(flag == true){
-                count++;
-                if (i == analyser.size()){
-                    break;
-                }
-            }
-        }
-        */
-        //return count;
-        return distinct;
+        return 0;
     }
 
     /**
@@ -211,9 +170,8 @@ public class StringAnalyser {
     public int totalLength() {
         // TO DO: write proper method body
         int totalLength = 0;
+        //loop through list and add length of each string
         for (int i = 0 ; i < analyser.size(); i++){
-            //for (String i : analyser){
-            //totalLength = totalLength + i.length();
             String n = analyser.get(i);
             if (n != null){
                 totalLength = totalLength + n.length();
@@ -239,6 +197,7 @@ public class StringAnalyser {
      */
     public static int totalLength(StringAnalyser[] analysers) {
         // TO DO: write proper method body
+        //loop througth the array of strings from 'analysers' and sdd the total length.
         analysers = analysers;
         String names = "";
         int total = 0;
@@ -263,7 +222,7 @@ public class StringAnalyser {
      */
     public double averageLength() {
         // TO DO: write proper method body
-        //total/numberOfItems
+        //add all and then find the average, amek sure to use doubles
         double totalLength = 0.0;
         int count = 0;
         double t = 0.0;
@@ -334,34 +293,20 @@ public class StringAnalyser {
      */
     public String getGreatest() {
         // TO DO: write proper method body
-        /*int count = 0;
-        String greatest = "";
-        //int greatestNo = 0;
-        if(analyser != null){
-            for (int i = 0 ; i < analyser.size(); i++){
-                String word1 = analyser.get(i);
-                for (int j = 1; j < analyser.size(); j++){
-                    String word2 = analyser.get(j);
-                    if(word1 != null ){
-                        System.out.println(word1.compareTo(word2));
-                        int n = (word1.compareTo(word2));
-                        System.out.println("this is 1 : "+ word1 + " this is 2 : "+word2);
-                        if (n > greatest.length()){
-                            greatest = word1;
-                        }
-                        //flag = true;
-                    }else {
-                        return null;
-                        //System.out.println("***2**");
-                    }
+        //set the greatest as the first and then loop through to compare the strings in analyser
+        if(analyser.size() > 0){
+            int k = 0;
+            String greatest = null;           
+            for(k = 0; k < analyser.size(); k++){              
+                String word = analyser.get(k);
+                if (greatest == null || greatest.compareTo(word)<0){
+                    greatest = word;
+                }else{
+                    continue;
                 }
             }
-            System.out.println("***"+greatest+"**");
             return greatest;
-        }else{
-            return null;
-        }
-        */
+           } 
         return null;
         }
         
