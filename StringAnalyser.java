@@ -1,4 +1,4 @@
-//2nd_C
+//Master
 import java.util.*;
 
 /**
@@ -17,8 +17,7 @@ public class StringAnalyser {
 
     // TO DO: add and document instance variable(s)
     private ArrayList<String> analyser = new ArrayList<>();
-    public ArrayList<String> group = new ArrayList<>();
-    public ArrayList<String> list = new ArrayList<>();
+
 
     /**
      * Constructs a new StringAnalyser without any Strings.
